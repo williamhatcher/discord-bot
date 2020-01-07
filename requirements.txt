@@ -1,0 +1,13 @@
+aiohttp==3.5.4
+async-timeout==3.0.1
+attrs==19.3.0
+chardet==3.0.4
+discord.py==1.2.5
+idna==2.8
+mongoengine==0.19.1
+mongolog==0.1.2
+multidict==4.7.3
+pymongo==3.10.0
+six==1.13.0
+websockets==6.0
+yarl==1.4.2
