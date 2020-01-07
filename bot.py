@@ -27,7 +27,7 @@ async def on_ready():
 @bot.event
 async def on_guild_join(guild: discord.Guild):
     """Adds guild to database if not already in it"""
-    if not Server.get_server(guild):
+    if not await Server.get_server(guild):
         log.info(f"Adding {guild.name} to DB")
         s = Server()
         s.guild = guild.id
