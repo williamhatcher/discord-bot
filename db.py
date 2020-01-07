@@ -1,15 +1,15 @@
 from __future__ import annotations
-
 from typing import Union
-
 import discord
 from mongoengine import *
+
+from utils import DEFAULT_PREFIX
 
 
 class Server(Document):
     """Object to store server/guild settings"""
     guild = IntField(primary_key=True)
-    prefix = StringField(required=True, default='$')
+    prefix = StringField(required=True, default=DEFAULT_PREFIX)
 
     def __str__(self):
         return f"Server <{self.guild}>"

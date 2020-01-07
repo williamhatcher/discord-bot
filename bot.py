@@ -5,13 +5,17 @@ from discord.ext import commands
 from mongoengine import connect
 
 from db import Server
-from utils import log, DB
+from utils import log, DB, DEFAULT_PREFIX
 
 
 async def prefix_callable(_bot: commands.Bot, message) -> [str]:
     """Returns list of prefixes for commands"""
-    prefixes = []
-    return commands.when_mentioned_or(*prefixes)(_bot, message)
+    base = []
+    if message.guild is None:
+        base.append(DEFAULT_PREFIX)
+    else:
+        base.append(Server.objects.scalar('prefix').with_id(message.guild.id))
+    return commands.when_mentioned_or(*base)(_bot, message)
 
 
 bot = commands.Bot(command_prefix=prefix_callable)

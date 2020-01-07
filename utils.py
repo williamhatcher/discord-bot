@@ -2,10 +2,12 @@ import logging
 import os
 from mongolog import MongoHandler
 
+DEFAULT_PREFIX = '$'
+
 if os.getenv('DEBUG'):
-    DB = 'bid_debug'
+    DB = ''
 else:
-    DB = 'bid'
+    DB = ''
 
 log = logging.getLogger('discord')
 log.setLevel(logging.INFO)
